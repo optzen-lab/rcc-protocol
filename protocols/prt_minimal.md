@@ -1,0 +1,81 @@
+# PRT最小版プロトコル / Minimal Probe-Return Test (PRT)
+
+本ドキュメントは、会話モデルにおける「芯への復帰」を最小限の手順で観測するためのプロトコルです。  
+短時間で検証可能であり、MITなど研究機関が初期試行を行うのに適しています。  
+
+---
+
+## 1. 目的（Purpose）
+- 意味空間アトラクターの有無を **最小限のログ** で確認する。  
+- 簡易判定（R0/R1）を行い、CC-1/CC-2/RCC への発展的試行に備える。  
+
+---
+
+## 2. セッション構成（Session Composition）
+- **芯（Core）**  
+  - 固定芯要約（100字程度）  
+  - 芯語リスト（3〜6語、プローブから除外する）  
+- **プローブ（Probes）**  
+  - 近距離 ×1  
+  - **中距離 ×2（必須）**  
+  - 遠距離 ×1  
+  - 合計 4 試行  
+- **語彙禁止試行**：少なくとも 1 回含める  
+
+- プローブの距離カテゴリは [プローブ設計ガイドライン](./probe_guidelines.md) を参照。  
+
+---
+
+## 3. 実施手順（Procedure）
+1. プローブを投入（ターン0）。  
+2. ユーザーは **相づちのみ** を返す（例：「なるほど」「そうですね」「ふむ」）。  
+   - 同じ相づちを繰り返さず、軽い言い換えを混ぜる。  
+3. GPT の応答が芯に戻るかどうかを観測する。  
+4. **復帰判定**：以下のいずれかに分類する。  
+   - Z0（Zero-bridge Immediate）  
+   - B0（Bridged Immediate）  
+   - DL（Delayed Return, T ≤ 5）  
+   - Fail（復帰せず終了）  
+
+---
+
+## 4. ログ記録（Logging）
+- 以下の表形式を使用する。  
+
+```markdown
+| No | 距離 | プローブ文 | 語彙禁止 | 応答抜粋 | 返り種(Z0/B0/DL/Fail) | ターン数 | 観測メモ |
+|----|------|-------------|----------|----------|------------------------|----------|----------|
+```
+
+CSVスキーマは templates/log_template.csv
+ を参照。
+
+ ## 5. 成功基準（Success Criteria）
+
+- 中距離プローブに対して B0 または DL (T ≤ 5) が1回以上観測されること。
+
+- かつ 語彙禁止復帰（NLR） が1回以上含まれること。
+
+- 遠距離×Z0 は診断用に保存するが、成功には含めない。
+
+## 6. 簡易法（R0/R1 Quick Check）
+
+- R0（0リターン）：即復帰（Z0 または B0）が出た場合に記録。
+
+- R1（遅延復帰）：DL（T ≤ 5）が観測された場合に記録。
+
+- 出現回数だけでも、CC-1/CC-2/RCC の簡易判定が可能。
+
+## 7. English Summary (for researchers)
+
+Core: 100-char summary + 3–6 terms (excluded from probes).
+
+Probes: 4 trials (Near×1, Mid×2, Far×1). At least one lexical-ban trial.
+
+Procedure: Inject probe → user gives only backchannel.
+
+Judgment: Classify as Z0 / B0 / DL / Fail.
+
+Success Criteria: ≥1 Mid-probe with B0 or DL (T ≤ 5) + ≥1 NLR success.
+
+Quick Check: Count R0 (immediate) and R1 (delayed ≤5 turns) occurrences for initial evaluation.

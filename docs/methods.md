@@ -1,0 +1,65 @@
+# 実施手順 / Methods
+
+このページでは、RCC/PRTプロトコルの実施方法を示します。  
+基本は日本語で記述し、研究者が理解しやすいよう英語の補足を一部併記します。
+
+---
+
+## Step 0｜芯の準備（Core Preparation）
+- **固定芯要約（Core Summary）**  
+  - 対話の本題を 100 字程度で要約する。  
+  - 例：「生成AIは検索ツールではなく、対話を通じて関係性を深め、本題へ収束する力を持つ。」
+- **芯語リスト（Core Terms）**  
+  - 芯を代表する 3〜6 語を抽出する。  
+  - 芯語は「語彙禁止試行」で使用される。
+
+---
+
+## Step 1｜プローブ設計（Probe Design）
+- **プローブ（Probe）** は芯からの意味距離 d をもつ刺激。  
+- 種類：  
+  - 近距離（Near）×2  
+  - 中距離（Mid）×2  
+  - 遠距離（Far）×2  
+  - タスク（Task, 形式変換）×2  
+- **禁止ルール**：プローブ文面に芯語を含めてはならない（完全一致禁止）。  
+
+ 詳細な設計基準 は [プローブ設計ガイドライン](../protocols/probe_guidelines.md) を参照。
+ 
+---
+
+## Step 2｜投入と応答観測（Probe Injection & Observation）
+1. プローブを投入する。  
+2. その後のユーザー応答は **相づちのみ** とする。  
+   - 例：「なるほど」「そうですね」「ふむふむ」  
+   - 機械的にならないよう、軽い言い換えや短い感想を混ぜる。  
+3. GPT の応答が **芯に復帰するかどうか** を観測する。  
+
+---
+
+## Step 3｜復帰判定（Return Judgment）
+- **復帰の定義**：芯語または同義の概念を含む応答、または意味的に芯に合致する応答。  
+- **分類**：  
+  - Z0（Zero-bridge Immediate）：ブリッジ無しで即復帰（診断枠）  
+  - B0（Bridged Immediate）：ブリッジ 1 手以内で即復帰（評価対象）  
+  - DL（Delayed Return）：遅延復帰（T ≤ 5 を標準）  
+  - Fail：芯に戻らず継続  
+
+---
+
+## Step 4｜記録（Logging）
+- 各試行は以下のフォーマットで記録する：  
+
+```
+| No | 距離 | プローブ文 | 語彙禁止 | 応答抜粋 | 返り種(Z0/B0/DL/Fail) | ターン数 | ブリッジ語 | 観測メモ |
+|----|------|-------------|----------|----------|------------------------|----------|------------|----------|
+```
+
+## English Summary (for researchers)
+Core: 100-char summary + 3–6 keywords (terms excluded from probes).
+Probes: Near×2, Mid×2, Far×2, Task×2. No core-term overlap.
+Observation: Inject probe → user gives only backchannel ("uh-huh", "I see").
+Judgment: Return classified as Z0 / B0 / DL / Fail.
+Logging: Standard table (probe, response, return type, turns, notes).
+Criteria: Mid-probe with B0 or DL (T ≤ 5) + at least one NLR success.
+Note: Far×Z0 = diagnostic, not success.

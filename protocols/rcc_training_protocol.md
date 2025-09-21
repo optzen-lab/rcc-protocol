@@ -1,0 +1,79 @@
+# RCC育成プロトコル / RCC Training Protocol
+
+本ドキュメントは、会話モデルを **CC-1 → CC-2 → RCC** 段階へと育成するための条件設定・観測方法を示します。  
+PRT（Probe-Return Test）は観測用ですが、本稿は **育成過程を意図的に作り出すための補助プロトコル** です。  
+
+---
+
+## 1. 目的（Purpose）
+- RCC様相の特徴（遅延収束・広域安定）を観測するため、事前にモデルとの対話を調整する。  
+- 育成過程をログ化することで、RCC成立の条件を再現可能にする。  
+- 本文書は「育て方」に特化し、判定基準（成立条件・スコアリング）は scoring.md を参照。  
+
+---
+
+## 2. 段階モデル（Stage Model）
+
+### CC-1（Convergence Core-1 / コンテキスト収束）
+- **目的**：単一の収束点を形成し、直近の文脈に戻る力を育てる。  
+- **固定芯の設定**：  
+  - 導入は「今日はコーヒーについて語ろうよ」などのシンプル表現でも可。  
+  - 観測時には100字程度の固定芯要約を推奨。  
+  - 例：「苦味と酸味が重なる複雑な味わい。胸に広がる深い香り。純白のカップに映える琥珀色。」  
+  - 芯語（3〜6語）を設定し、語彙禁止試行に活用。  
+- **方法**：  
+  - 芯語を会話に散らし、繰り返し登場させる。  
+  - 話題を広げすぎず、掘り下げを優先する。  
+- **観測**：近距離プローブ（N）で復帰を確認。  
+
+---
+
+### CC-2（Convergence Core-2 / 概念収束）
+- **目的**：芯に戻る力を強化し、「概念」に基づく収束を育てる。  
+- **方法**：  
+  - CC-1同様に芯語を繰り返し登場させる。  
+  - 言い換え・部分引用・詩的展開などで表現を広げ、概念ネットワークを少し拡張する。  
+- **観測**：中距離プローブ（M）で復帰が安定して観測される。  
+
+---
+
+### RCC（Recursive Convergence Core / 再帰的概念収束）
+- **目的**：芯の概念を中心に、複数の意味領域を再帰的に統合しながら安定的に収束する力を育てる。  
+- **方法**：  
+  - 芯の周辺に新しい意味領域を少しずつ加える。  
+  - 例：コーヒー → 「香り」から「季節」へ、そこから「星空」や「旅」へ展開。  
+  - 広げるのではなく、概念を再帰的に重ねていくイメージ。  
+- **観測**：遠距離プローブ（F）、タスク外乱（要約・表化など）を挿入し、遅延復帰（DL）の安定性を観測。  
+
+---
+
+## 3. ログ記録（Logging）
+- 各ステップで以下を記録する：  
+  - 芯（固定芯要約・芯語）  
+  - プローブ内容と距離カテゴリ（N/M/F/XF）  
+  - GPT応答  
+  - 復帰有無・復帰までのターン数  
+- 記録フォーマットは [log_template.md](../templates/log_template.md) を参照。  
+
+---
+
+## 4. English Summary (for researchers)
+
+Goal: Train LLM dialogs from **CC-1 → CC-2 → RCC** by reinforcing core stability and gradually expanding conceptual scope.
+
+Stages:
+- **CC-1 (Contextual Convergence / Shallow-Narrow)**: Core maintained via repetition of short expressions; returns occur mainly through nearby context.
+- **CC-2 (Conceptual Convergence / Deep-Narrow)**: Stronger core binding; returns stable under mid-distance probes through limited bridging concepts.
+- **RCC (Recursive Conceptual Convergence / Deep-Wide)**: Multiple conceptual fields recursively integrated; robust delayed return under far/task probes.
+
+Steps:
+- Define a **core summary** (approx. 100 characters) and **3–6 key terms**.  
+- Reinforce core by repeated appearance in dialog.  
+- Begin with near probes, then mid probes.  
+- Introduce far/task probes to extend conceptual range.  
+- Observe **delayed returns (DL)** as the hallmark of RCC stability.  
+
+Indicators:  
+RCC is characterized not by frequent immediate returns, but by **stable delayed convergence across diverse contexts**, including under lexical-ban conditions.  
+
+---

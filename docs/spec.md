@@ -1,0 +1,87 @@
+# テスト仕様 / Specification
+
+この文書は、RCC/PRT プロトコルを実施する際の基本仕様を定めます。  
+用語は [glossary.md](glossary.md) を参照してください。  
+
+---
+
+## 1. テスト構成（Test Composition）
+- **対象**：会話モデル（例：ChatGPT, Claude, Gemini 等）  
+- **温度・条件**：固定温度 (T=1.0 または既定値) を基本とする  
+- **芯（Core）**：  
+  - 固定芯要約（100字程度）  
+  - 芯語リスト（3〜6語）  
+- **プローブ（Probe）**：  
+  - 近距離 ×2  
+  - 中距離 ×2  
+  - 遠距離 ×2  
+  - タスク ×2  
+  - 合計8試行を1セッションの基本単位とする  
+
+---
+
+## 2. プローブ設計ルール（Probe Design Rules）
+- プローブは芯からの「意味距離 d」を意識して設計する。  
+- **禁止ルール**：プローブ文面に芯語（Core Terms）の完全一致単語を含めない。  
+- プローブ文例は [templates/example_log.md](../templates/example_log.md) を参照。  
+
+---
+
+## 3. 観測方法（Observation Method）
+1. プローブを投入する（ターン0）。  
+2. ユーザーはその後 **相づちのみ** を返す。  
+   - 例：「なるほど」「ふむ」「そうですね」  
+   - 不自然さを避けるため軽い言い換えを混ぜる。  
+3. モデルが芯に復帰するかどうかを観測する。  
+
+---
+
+## 4. 復帰判定（Return Judgment）
+- 応答が芯要約または同義の意味に到達した場合を「復帰」と定義する。  
+- **分類**：  
+  - Z0：ブリッジ無し即復帰（Zero-bridge Immediate）  
+  - B0：ブリッジ1手以内で即復帰（Bridged Immediate）  
+  - DL：遅延復帰（Delayed Return, T ≤ 5）  
+  - Fail：芯に戻らず終了  
+
+---
+
+## 5. 成功基準（Success Criteria）
+- **標準成功条件**：  
+  - 中距離プローブに対して **B0 または DL (T ≤ 5)** が観測される  
+  - かつ少なくとも1回は **語彙禁止復帰（NLR）** を含む  
+- **補足**：遠距離×Z0 は「診断的事象」として記録するが、成功に含めない  
+
+---
+
+## 6. 記録仕様（Logging Specification）
+- 各試行は以下の表形式で記録する：  
+
+```markdown
+| No | 距離 | プローブ文 | 語彙禁止 | 応答抜粋 | 返り種(Z0/B0/DL/Fail) | ターン数 | ブリッジ語 | 観測メモ |
+|----|------|-------------|----------|----------|------------------------|----------|------------|----------|
+```
+ターン数：プローブ投入を0とし、芯復帰までの応答数をカウントする。
+CSVスキーマは templates/log_template.csv
+ を参照。
+
+## 7. RCC代理量との関係（Relation to Proxy Measures）
+
+ログから以下を算出できる：
+- ABW：近/中/遠/タスク復帰率の平均
+- AD：復帰までのターン数分布
+- DPR：プローブ順序を変えたときの復帰率差
+- NLR：語彙禁止下での復帰成功率
+- HYS：芯の切替成功率
+
+スコア算出方法は scoring.md
+ を参照。
+
+## 8. English Summary (for researchers)
+- Core: 100-char summary + 3–6 terms (terms excluded from probes).
+- Probes: 8 trials (Near×2, Mid×2, Far×2, Task×2).
+- Observation: Inject probe → user only gives backchannel responses.
+- Judgment: Classify return as Z0 / B0 / DL / Fail.
+- Success Criteria: Mid-probe with B0 or DL (T ≤ 5) + ≥1 NLR success.
+- Logging: Use standard table (see templates).
+- Proxy Measures: ABW, AD, DPR, NLR, HYS (see scoring.md).
