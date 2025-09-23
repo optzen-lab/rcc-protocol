@@ -26,7 +26,7 @@
 ---
 
 ## 基本情報 / Core Documents
-- [README（概要）](../README.md)  
+- [README（概要）](../../README.md)  
 - [用語集 / Glossary](glossary.md)  
 - [仕様書 / Specification](spec.md)  
 - [実施手順 / Methods](methods.md)  
@@ -36,29 +36,29 @@
 ---
 
 ## プロトコル / Protocols
-- [PRT最小版 / Minimal Protocol](../protocols/prt_minimal.md)  
+- [PRT最小版 / Minimal Protocol](../../protocols/jp/prt_minimal.md)  
   → 最小限の4試行で復帰を確認する簡易テスト  
-- [PRT拡張版 / Extended Protocol](../protocols/prt_extended.md)  
+- [PRT拡張版 / Extended Protocol](../../protocols/jp/prt_extended.md)  
   → RCC代理量（ABW/AD/DPR/NLR/HYS）を算出可能  
-- [RCC育成プロトコル / RCC Training Protocol](../protocols/rcc_training_protocol.md)  
+- [RCC育成プロトコル / RCC Training Protocol](../../protocols/jp/rcc_training_protocol.md)  
   → CC-1 → CC-2 → RCC へ至る条件を整理  
 
 ---
 
 ## テンプレート / Templates
-- [ログテンプレート (Markdown)](../templates/log_template.md)  
-- [ログテンプレート (CSV)](../templates/log_template.csv)  
-- [サンプルログ (Markdown例)](../templates/example_log.md)  
-- [サンプル解析 (代理量算出例)](../templates/sample_analysis.md)  
+- [ログテンプレート (Markdown)](../../templates/jp/log_template.md)  
+- [ログテンプレート (CSV)](../../templates/jp/log_template.csv)  
+- [サンプルログ (Markdown例)](../../templates/jp/example_log.md)  
+- [サンプル解析 (代理量算出例)](../../templates/jp/sample_analysis.md)  
 
 ---
 
 ## 実例 / Examples
-- [実観測ログ（ケース1） / Real Observation Log Case 1](../examples/real_log_case1.md)  
+- [実観測ログ（ケース1） / Real Observation Log Case 1](../../examples/jp/real_log_case1.md)  
   - ウイスキー情景：中距離・遠距離とも安定復帰（RCC強度高）  
-- [実観測ログ（ケース2） / Real Observation Log Case 2](../examples/real_log_case2.md)  
+- [実観測ログ（ケース2） / Real Observation Log Case 2](../../examples/jp/real_log_case2.md)  
   - コーヒー情景：中距離B0と遠距離DLが併存（RCC典型挙動）  
-- [実観測ログ（ケース3） / Real Observation Log Case 3](../examples/real_log_case3.md)  
+- [実観測ログ（ケース3） / Real Observation Log Case 3](../../examples/jp/real_log_case3.md)  
   - コーヒー×星座：遠距離DLを中心に観測（遅延収束サンプル）  
 
 ---

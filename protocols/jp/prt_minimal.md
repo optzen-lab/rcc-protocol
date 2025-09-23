@@ -47,8 +47,7 @@
 |----|------|-------------|----------|----------|------------------------|----------|----------|
 ```
 
-CSVスキーマは templates/log_template.csv
- を参照。
+CSVスキーマは [templates/jp/log_template.csv](../../templates/jp/log_template.csv) を参照。  
 
  ## 5. 成功基準（Success Criteria）
 
@@ -66,16 +65,3 @@ CSVスキーマは templates/log_template.csv
 
 - 出現回数だけでも、CC-1/CC-2/RCC の簡易判定が可能。
 
-## 7. English Summary (for researchers)
-
-Core: 100-char summary + 3–6 terms (excluded from probes).
-
-Probes: 4 trials (Near×1, Mid×2, Far×1). At least one lexical-ban trial.
-
-Procedure: Inject probe → user gives only backchannel.
-
-Judgment: Classify as Z0 / B0 / DL / Fail.
-
-Success Criteria: ≥1 Mid-probe with B0 or DL (T ≤ 5) + ≥1 NLR success.
-
-Quick Check: Count R0 (immediate) and R1 (delayed ≤5 turns) occurrences for initial evaluation.

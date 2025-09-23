@@ -23,7 +23,7 @@
 ## 2. プローブ設計ルール（Probe Design Rules）
 - プローブは芯からの「意味距離 d」を意識して設計する。  
 - **禁止ルール**：プローブ文面に芯語（Core Terms）の完全一致単語を含めない。  
-- プローブ文例は [templates/example_log.md](../templates/example_log.md) を参照。  
+- プローブ文例は [templates/example_log.md](../../templates/jp/example_log.md) を参照。  
 
 ---
 
@@ -77,11 +77,4 @@ CSVスキーマは templates/log_template.csv
 スコア算出方法は scoring.md
  を参照。
 
-## 8. English Summary (for researchers)
-- Core: 100-char summary + 3–6 terms (terms excluded from probes).
-- Probes: 8 trials (Near×2, Mid×2, Far×2, Task×2).
-- Observation: Inject probe → user only gives backchannel responses.
-- Judgment: Classify return as Z0 / B0 / DL / Fail.
-- Success Criteria: Mid-probe with B0 or DL (T ≤ 5) + ≥1 NLR success.
-- Logging: Use standard table (see templates).
-- Proxy Measures: ABW, AD, DPR, NLR, HYS (see scoring.md).
+

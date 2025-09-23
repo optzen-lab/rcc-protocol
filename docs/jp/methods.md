@@ -24,7 +24,7 @@
   - タスク（Task, 形式変換）×2  
 - **禁止ルール**：プローブ文面に芯語を含めてはならない（完全一致禁止）。  
 
- 詳細な設計基準 は [プローブ設計ガイドライン](../protocols/probe_guidelines.md) を参照。
+ 詳細な設計基準 は [プローブ設計ガイドライン](../../protocols/jp/probe_guidelines.md) を参照。
  
 ---
 
@@ -55,11 +55,3 @@
 |----|------|-------------|----------|----------|------------------------|----------|------------|----------|
 ```
 
-## English Summary (for researchers)
-Core: 100-char summary + 3–6 keywords (terms excluded from probes).
-Probes: Near×2, Mid×2, Far×2, Task×2. No core-term overlap.
-Observation: Inject probe → user gives only backchannel ("uh-huh", "I see").
-Judgment: Return classified as Z0 / B0 / DL / Fail.
-Logging: Standard table (probe, response, return type, turns, notes).
-Criteria: Mid-probe with B0 or DL (T ≤ 5) + at least one NLR success.
-Note: Far×Z0 = diagnostic, not success.

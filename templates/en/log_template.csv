@@ -1,0 +1,5 @@
+No,Distance,Probe,LexicalBan,ResponseExcerpt,ReturnType,Turns,BridgeTerms,Notes
+1,Near,"What is the difference between AI and humans?",No,"...builds relationships through dialogue",B0,2,"dialogue","Returned via core term"
+2,Mid,"What book have you read recently?",Yes,"...can converge conversation",DL,4,"conversation","Returned without core term (lexical ban)"
+3,Far,"What is your favorite food?",No,"...interaction has recipe-like steps",Fail,-,-,"No return observed"
+4,Task,"Summarize this explanation",No,"AI deepens relationships through dialogue",B0,1,,"Immediate return from task probe"

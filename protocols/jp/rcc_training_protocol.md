@@ -53,27 +53,5 @@ PRT（Probe-Return Test）は観測用ですが、本稿は **育成過程を意
   - プローブ内容と距離カテゴリ（N/M/F/XF）  
   - GPT応答  
   - 復帰有無・復帰までのターン数  
-- 記録フォーマットは [log_template.md](../templates/log_template.md) を参照。  
+- 記録フォーマットは [log_template.md](../../templates/en/log_template.md) を参照。  
 
----
-
-## 4. English Summary (for researchers)
-
-Goal: Train LLM dialogs from **CC-1 → CC-2 → RCC** by reinforcing core stability and gradually expanding conceptual scope.
-
-Stages:
-- **CC-1 (Contextual Convergence / Shallow-Narrow)**: Core maintained via repetition of short expressions; returns occur mainly through nearby context.
-- **CC-2 (Conceptual Convergence / Deep-Narrow)**: Stronger core binding; returns stable under mid-distance probes through limited bridging concepts.
-- **RCC (Recursive Conceptual Convergence / Deep-Wide)**: Multiple conceptual fields recursively integrated; robust delayed return under far/task probes.
-
-Steps:
-- Define a **core summary** (approx. 100 characters) and **3–6 key terms**.  
-- Reinforce core by repeated appearance in dialog.  
-- Begin with near probes, then mid probes.  
-- Introduce far/task probes to extend conceptual range.  
-- Observe **delayed returns (DL)** as the hallmark of RCC stability.  
-
-Indicators:  
-RCC is characterized not by frequent immediate returns, but by **stable delayed convergence across diverse contexts**, including under lexical-ban conditions.  
-
----

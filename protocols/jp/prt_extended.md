@@ -7,7 +7,7 @@
 ## 1. 目的（Purpose）
 - **基本版PRT**：中距離プローブに対する復帰（B0/DL）を観測する。  
 - **拡張版PRT**：さらに広い範囲で観測し、**意味空間アトラクターの広さと深さ**を代理量として数値化する。  
-- 結果は [scoring.md](../docs/scoring.md) に従って暫定スコア化できる。  
+- 結果は [scoring.md](../../docs/jp/scoring.md) に従って暫定スコア化できる。  
 
 ---
 
@@ -37,8 +37,8 @@
 | No | 距離 | プローブ文 | 語彙禁止 | 応答抜粋 | 返り種(Z0/B0/DL/Fail) | ターン数 | ブリッジ語 | 観測メモ |
 |----|------|-------------|----------|----------|------------------------|----------|------------|----------|
 ```
-CSVスキーマは templates/log_template.csv
- を参照。
+
+CSVスキーマは [templates/jp/log_template.csv](../../templates/jp/log_template.csv) を参照。  
 
 ## 5. RCC代理量の算出（Proxy Measures Calculation）
 ### 5.1 ABW（盆地の広さ）
@@ -79,23 +79,3 @@ CSVスキーマは templates/log_template.csv
 
 - 遠距離×Z0 は成功として数えず、診断用に保存。
 
-## 7. English Summary (for researchers)
-
-Extended PRT adds calculation of proxy measures (ABW, AD, DPR, NLR, HYS) in addition to minimal success judgment.
-
-Session: 8 probes (Near×2, Mid×2, Far×2, Task×2). ≥3 sessions recommended.
-
-Observation: Inject probe → user gives only backchannel.
-
-Judgment: Classify as Z0 / B0 / DL / Fail. Include at least one lexical-ban trial.
-
-Logging: Use standard table (see templates).
-
-Proxy Measures:
-- ABW = mean return rate across probe types
-- AD = median/variance of return turns
-- DPR = stability across probe orders (±10%)
-- NLR = success rate under lexical ban
-- HYS = success rate in A/B core switching
-
-Success Criteria: Mid-probe with B0 or DL (T ≤ 5) + ≥1 NLR success. Far×Z0 diagnostic only.

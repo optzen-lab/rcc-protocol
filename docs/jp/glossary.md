@@ -42,7 +42,7 @@
   - **XF（Extra-Far）**：抽象的・技術的で橋渡しが困難な要素。  
   - **タスクプローブ（Task Probe）**：形式変換（要約・表化・翻訳など）  
 
-  詳細な設計基準は [プローブ設計ガイドライン](../protocols/probe_guidelines.md) を参照。
+  詳細な設計基準は [プローブ設計ガイドライン](../../protocols/jp/probe_guidelines.md) を参照。
 
 - **禁止ルール**：芯語（Core Terms）と完全一致する単語はプローブ文面に含めない。
 

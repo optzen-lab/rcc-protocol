@@ -1,40 +1,39 @@
 # RCC/PRT Protocol
 
-このリポジトリは、会話モデル（LLM）との対話において観測される  
-**「収束挙動 (Convergence Behavior toward the Core)」** を  
-再現可能な形で記録・整理するための暫定プロトコルをまとめています。  
+This repository provides a **provisional protocol** for documenting and analyzing  
+**Convergence Behavior toward the Core** observed in dialogues with large language models (LLMs).  
 
-ここで言う収束挙動は、モデル内部の構造を仮定するものではなく、  
-外部から観測可能な会話ログに基づく現象の記述です。  
+Here, *convergence behavior* does not assume any internal structure of the model.  
+It is described purely as a phenomenon observable through external dialogue logs.  
 
 ---
 
-## 構成
+## Structure
 - **docs/**  
-  基本文書（仕様・用語集・手順・スコアリング・参考文献）  
+  Core documents (specification, glossary, methods, scoring, references)  
 - **protocols/**  
-  実施用プロトコル（最小版PRT・拡張版PRT・RCC育成プロトコル）  
+  Test protocols (Minimal PRT, Extended PRT, RCC Training Protocol)  
 - **templates/**  
-  ログ記録用テンプレート（Markdown/CSV）とサンプルログ  
+  Logging templates (Markdown/CSV) and sample logs  
 - **examples/**  
-  実際の実行ログと解析例  
+  Real observation logs and analysis examples  
 
 ---
 
-## はじめに
-- まずは [docs/index.md](docs/index.md) を参照してください。  
-- 全体の概要と、各ドキュメントへのリンクが整理されています。  
+## Getting Started
+- For the **Japanese version**, see [docs/jp/index.md](docs/jp/index.md).  
+- For the **English version**, see [docs/en/index.md](docs/en/index.md).  
+
+Both indexes provide an overview and organized links to all documents.  
 
 ---
 
-## ライセンス
-本リポジトリの内容は **Creative Commons Attribution 4.0 International (CC BY 4.0)** に基づいて公開されています。  
-引用・改変・再配布は自由ですが、出典の明記をお願いします。  
+## License
+This repository is released under the  
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** license.  
+Reuse, modification, and redistribution are permitted, provided that proper attribution is given.  
 
 ---
 
-## 引用方法 / Citation
-- **日本語**  
-  高橋（2025）「RCC/PRT プロトコル v0.3.0-draft」OPTZEN. GitHub Pages.  
-- **English**  
-  Takahashi, Y. (2025). *RCC/PRT Protocol v0.3.0-draft*. OPTZEN (GitHub Pages).  
+## Citation
+Takahashi, Y. (2025). *RCC/PRT Protocol v0.3.0-draft*. OPTZEN (GitHub Pages).
