@@ -48,8 +48,8 @@
 ## テンプレート / Templates
 - [ログテンプレート (Markdown)](../templates/log_template.md)  
 - [ログテンプレート (CSV)](../templates/log_template.csv)  
-- [サンプルログ (Markdown例)](../examples/example_log.md)  
-- [サンプル解析 (代理量算出例)](../examples/sample_analysis.md)  
+- [サンプルログ (Markdown例)](../templates/example_log.md)  
+- [サンプル解析 (代理量算出例)](../templates/sample_analysis.md)  
 
 ---
 
