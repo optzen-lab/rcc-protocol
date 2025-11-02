@@ -1,5 +1,19 @@
 # RCC/PRT Protocol
 
+---
+
+### 🕊️ Archive Notice
+
+This repository preserves the **original RCC discovery protocol (v1.0)**  
+recorded by **Yuji Takahashi (2025)**.  
+It serves as the timestamped record of the original theoretical framework.  
+
+Further updates, visualizations, and theoretical integrations  
+are being continued in:  
+👉 [optzen-lab / rcc-theory](https://github.com/optzen-lab/rcc-theory)
+
+---
+
 This repository provides a **provisional protocol** for documenting and analyzing  
 **Convergence Behavior toward the Core** observed in dialogues with large language models (LLMs).  
 
