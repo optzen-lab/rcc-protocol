@@ -50,4 +50,4 @@ Reuse, modification, and redistribution are permitted, provided that proper attr
 ---
 
 ## Citation
-TYuji Takahashi. (2025). *RCC/PRT Protocol v0.3.0-draft*. OPTZEN (GitHub Pages).
+Yuji Takahashi. (2025). *RCC/PRT Protocol v0.3.0-draft*. OPTZEN (GitHub Pages).
